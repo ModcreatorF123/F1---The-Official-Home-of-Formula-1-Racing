@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zdjęcie i Filmik</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden; /* Usunięto przewijanie dla całej strony */
+        }
+        #imageContainer {
+            width: 100vw;
+            height: 100vh;
+            overflow-y: auto; /* Dodano przewijanie tylko dla zdjęć */
+        }
+        .fullscreenImage {
+            width: 100%; /* Szerokość 100% szerokości kontenera */
+            height: auto; /* Wysokość automatyczna, dostosowana proporcjonalnie */
+            object-fit: contain;
+            cursor: pointer;
+            margin-bottom: 1cm; /* Odstęp między zdjęciami */
+        }
+        #videoContainer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: none;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1;
+        }
+        video {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="imageContainer">
+        <!-- Obrazek 1 w trybie pełnoekranowym -->
+        <img class="fullscreenImage" src="f1pages.jpg" alt="F1 Pages" onclick="showVideo()">
+        
+        <!-- Obrazek 2 w trybie pełnoekranowym -->
+        <img class="fullscreenImage" src="f1pages2.jpg" alt="F1 Pages 2" onclick="showVideo2()">
+    </div>
+
+    <div id="videoContainer">
+        <!-- Wideo -->
+        <video autoplay controls>
+            <source src="jumpscare.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    
+    <script>
+        // Funkcja do pokazania wideo po kliknięciu w obraz
+        function showVideo() {
+            var imageContainer = document.getElementById('imageContainer');
+            var videoContainer = document.getElementById('videoContainer');
+
+            imageContainer.style.display = 'none';
+            videoContainer.style.display = 'block';
+
+            var video = document.querySelector('video');
+            video.play(); // Uruchomienie odtwarzania wideo
+        }
+
+        // Funkcja do pokazania wideo po kliknięciu w drugie zdjecie
+        function showVideo2() {
+            var imageContainer = document.getElementById('imageContainer');
+            var videoContainer = document.getElementById('videoContainer');
+
+            imageContainer.style.display = 'none';
+            videoContainer.style.display = 'block';
+
+            var video = document.querySelector('video');
+            video.play(); // Uruchomienie odtwarzania wideo
+        }
+    </script>
+</body>
+</html>
